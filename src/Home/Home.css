@@ -1,0 +1,19 @@
+.name-input {
+  width: 200px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.name-input:focus {
+  outline: none;
+  border:2px solid blue;
+}
+
+h1 {
+  color: black;
+  background-color: white;
+}
