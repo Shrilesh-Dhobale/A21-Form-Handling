@@ -2,9 +2,8 @@ import {useState,useEffect} from 'react'
 import './Home.css'
 
 function Home() {
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [error,setError]=useState("");
+    const [formData, setFormData] = useState({ name: '', age: '' , error: ''});
+    
 
 
     const saveName=()=>{
@@ -25,10 +24,10 @@ function Home() {
       const nameFromStorage=localStorage.getItem("name");
       const ageFromStorage=localStorage.getItem("age");
       if(ageFromStorage){
-        setAge(ageFromStorage);
+        setFormData({...formData, age: ageFromStorage});
       }
       if(nameFromStorage){
-        setName(nameFromStorage);
+        setFormData({...formData, name: nameFromStorage});
       }
     },[]);
 
@@ -40,13 +39,7 @@ function Home() {
       else if(name.length>20){
         setError("Name must be less than 20 characters long");
       }
-      else{
-        setError("");
-      }
-    },[name]);
-
-    useEffect(()=>{
-      if(age<18){
+      else if(age<18){
         setError("Age must be at least 18");
       }
       else if(age>60){
@@ -55,7 +48,9 @@ function Home() {
       else{
         setError("");
       }
-    },[age]);
+    },[name,age]);
+
+    
 
   return (
     <div>
