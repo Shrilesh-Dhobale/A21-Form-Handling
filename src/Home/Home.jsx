@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import './Home.css'
 
 function Home() {
@@ -10,6 +10,14 @@ function Home() {
       }
       localStorage.setItem("name",name);
       };
+
+    useEffect(()=>{
+      const nameFromStorage=localStorage.getItem("name");
+      if(nameFromStorage){
+        setName(nameFromStorage);
+      }
+    },[]);
+
   return (
     <div>
     <h1>Hello {name} </h1>
