@@ -31,6 +31,7 @@ function Home() {
 
   return (
     <div>
+    <div className='home-container'>
     <h1>Hello {name} </h1>
       <input type="text"
       placeholder="Enter your name"
@@ -50,6 +51,8 @@ function Home() {
         setName("")
         }}>Clear</button>
       </div>
+    </div>
+      
     </div>
   )
 }
