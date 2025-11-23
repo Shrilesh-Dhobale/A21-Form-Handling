@@ -5,6 +5,7 @@ function Home() {
     const [name, setName] = useState('');
     const [error,setError]=useState("");
     const saveName=()=>{
+
       if(!name){
         alert("Please enter your name");
         return;
@@ -41,7 +42,9 @@ function Home() {
       />
       <p className='error-msg'>{error}</p>
       <div className='btn-container'>
-        <button className="btn" onClick={saveName}>Save</button>
+        <button className={`btn ${error ? 'disabled' : null}`} 
+        onClick={saveName}>Save</button>
+        
         <button className="btn" 
         onClick={()=>{ 
         setName("")
