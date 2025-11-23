@@ -10,8 +10,10 @@ function Home() {
       placeholder="Enter your name"
       className='name-input' 
       onChange={(e)=>{
-        setName(e.target.value)
-      }}/>
+      setName(e.target.value)
+      }}
+      />
+      <div className="btn">Save</div>
     </div>
   )
 }
