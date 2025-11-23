@@ -29,11 +29,13 @@ function Home() {
       }}
         value={name}
       />
-      <button className="btn" onClick={saveName}>Save</button>
-      <button className="btn" 
-      onClick={()=>{ 
+      <div className='btn-container'>
+        <button className="btn" onClick={saveName}>Save</button>
+        <button className="btn" 
+        onClick={()=>{ 
         setName("")
-      }}>Clear</button>
+        }}>Clear</button>
+      </div>
     </div>
   )
 }

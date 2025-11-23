@@ -17,3 +17,18 @@ h1 {
   color: black;
   background-color: white;
 }
+.btn-container {
+  margin-top: 20px;
+  gap:20px;
+  display: flex;
+  
+}
+.btn{
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
