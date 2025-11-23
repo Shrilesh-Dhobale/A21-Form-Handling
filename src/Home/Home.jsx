@@ -3,6 +3,13 @@ import './Home.css'
 
 function Home() {
     const [name, setName] = useState('');
+    const saveName=()=>{
+      if(!name){
+        alert("Please enter your name");
+        return;
+      }
+      localStorage.setItem("name",name);
+      };
   return (
     <div>
     <h1>Hello {name} </h1>
@@ -14,7 +21,7 @@ function Home() {
       }}
         value={name}
       />
-      <button className="btn">Save</button>
+      <button className="btn" onClick={saveName}>Save</button>
       <button className="btn" 
       onClick={()=>{ 
         setName("")
