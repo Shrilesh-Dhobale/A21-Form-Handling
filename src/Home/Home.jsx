@@ -5,7 +5,8 @@ function Home() {
     const [formData, setFormData] = useState({
       name: '',
       age: '',
-      city: ''
+      city: '',
+      gender: ''
     });
     const [error, setError] = useState('');
     
@@ -77,8 +78,10 @@ function Home() {
           <select
            onChange={(e)=>{
               setFormData({...formData, city: e.target.value})
-            }}>
-           
+            }}
+            value={formData.city}
+            className='name-input'>
+            <option value="">Select City</option>
             <option value="Ngpr">Nagpur</option>
             <option value="Pune">Pune</option>
             <option value="Mumbai">Mumbai</option>
@@ -86,7 +89,16 @@ function Home() {
             <option value="Hyd">Hyderabad</option>
           </select>
         </div>
-
+        <div className='gender-radio'>
+          <input type="radio" value="Male"
+          name="gender" 
+          checked={formData.gender === "Male"} 
+          /> Male
+          <input type="radio" value="Female"
+          name="gender"
+          checked={formData.gender === "Female"}
+          />Female
+        </div>
         <div className='btn-container'>
           <button className={`btn ${error ? 'disabled' : ''}`} 
             onClick={saveName}
