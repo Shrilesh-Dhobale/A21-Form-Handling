@@ -27,6 +27,9 @@ function Home() {
       if(name.length<3){
         setError("Name must be at least 3 characters long");
       }
+      else if(name.length>20){
+        setError("Name must be less than 20 characters long");
+      }
       else{
         setError("");
       }
