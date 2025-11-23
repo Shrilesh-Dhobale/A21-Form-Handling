@@ -3,7 +3,10 @@ import './Home.css'
 
 function Home() {
     const [name, setName] = useState('');
+    const [age, setAge] = useState('');
     const [error,setError]=useState("");
+
+
     const saveName=()=>{
 
       if(!name){
@@ -33,6 +36,7 @@ function Home() {
     <div>
     <div className='home-container'>
     <h1>Hello {name} </h1>
+    <p>Your age is {age ? age : "unknown"}</p>
       <input type="text"
       placeholder="Enter your name"
       className='name-input' 
@@ -42,13 +46,25 @@ function Home() {
         value={name}
       />
       <p className='error-msg'>{error}</p>
+      <input type="number"
+      placeholder="Enter your age"
+      className='name-input' 
+      onChange={(e)=>{
+      setAge(e.target.value)
+      }}
+        value={age}
+      />
       <div className='btn-container'>
         <button className={`btn ${error ? 'disabled' : null}`} 
-        onClick={saveName}>Save</button>
+        onClick={saveName}
+        >Save</button>
         
         <button className="btn" 
         onClick={()=>{ 
         setName("")
+        setAge("")
+        localStorage.clear()
+        setError("")
         }}>Clear</button>
       </div>
     </div>
