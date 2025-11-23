@@ -21,7 +21,7 @@ h1 {
   margin-top: 20px;
   gap:20px;
   display: flex;
-  
+  left:20px;
 }
 .btn{
   background-color: blue;

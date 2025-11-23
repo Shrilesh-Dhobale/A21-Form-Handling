@@ -3,6 +3,7 @@ import './Home.css'
 
 function Home() {
     const [name, setName] = useState('');
+    const [error,setError]=useState("");
     const saveName=()=>{
       if(!name){
         alert("Please enter your name");
@@ -18,6 +19,15 @@ function Home() {
       }
     },[]);
 
+    useEffect(()=>{
+      if(name.length<3){
+        setError("Name must be at least 3 characters long");
+      }
+      else{
+        setError("");
+      }
+    },[name]);
+
   return (
     <div>
     <h1>Hello {name} </h1>
@@ -29,6 +39,7 @@ function Home() {
       }}
         value={name}
       />
+      <p className='error-msg'>{error}</p>
       <div className='btn-container'>
         <button className="btn" onClick={saveName}>Save</button>
         <button className="btn" 
