@@ -6,7 +6,8 @@ function Home() {
       name: '',
       age: '',
       city: '',
-      gender: ''
+      gender: '',
+      subjects: []
     });
     const [error, setError] = useState('');
     
@@ -93,11 +94,29 @@ function Home() {
           <input type="radio" value="Male"
           name="gender" 
           checked={formData.gender === "Male"} 
+          onChange ={(e)=>{
+            setFormData({...formData, gender: e.target.value})
+          }}
           /> Male
           <input type="radio" value="Female"
           name="gender"
           checked={formData.gender === "Female"}
+          onChange ={(e)=>{
+            setFormData({...formData, gender: e.target.value})
+          }}
           />Female
+        </div>
+        <div>
+          <p>Choose optional subject:</p>
+          <input type="checkbox"
+           name="subject" 
+           value="Maths"/>Maths
+          <input type="checkbox"
+            name="subject"
+            value="Science"/>Science
+          <input type="checkbox"
+            name="subject"
+            value="History"/>History
         </div>
         <div className='btn-container'>
           <button className={`btn ${error ? 'disabled' : ''}`} 
@@ -107,7 +126,7 @@ function Home() {
           
           <button className="btn" 
             onClick={()=>{
-              setFormData({ name: '', age: ''});
+              setFormData({ name: '', age: '', city: '', gender: '',subjects: []});
               setError('');
               localStorage.clear();
            }}>Clear</button>
