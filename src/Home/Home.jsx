@@ -110,13 +110,59 @@ function Home() {
           <p>Choose optional subject:</p>
           <input type="checkbox"
            name="subject" 
-           value="Maths"/>Maths
+           value="Maths"
+           onChange={(e)=>{
+            const val=e.target.value;
+            if (formData.subjects.includes(val)) {
+              setFormData({
+                ...formData,
+                subjects: formData.subjects.filter((subject) => subject !== val),
+              });
+            } else {
+              setFormData({
+                ...formData,
+                subjects: [...formData.subjects, val]
+              });
+            }
+            }}
+            />{" "}
+            Maths
           <input type="checkbox"
             name="subject"
-            value="Science"/>Science
+            value="Science"
+            onChange={(e)=>{
+            const val=e.target.value;
+            if (formData.subjects.includes(val)) {
+              setFormData({
+                ...formData,
+                subjects: formData.subjects.filter((subject) => subject !== val),
+              });
+            } else {
+              setFormData({
+                ...formData,
+                subjects: [...formData.subjects, val]
+              });
+            }
+            }}/>{" "}
+            Science
           <input type="checkbox"
             name="subject"
-            value="History"/>History
+            value="History"
+            onChange={(e)=>{
+            const val=e.target.value;
+            if (formData.subjects.includes(val)) {
+              setFormData({
+                ...formData,
+                subjects: formData.subjects.filter((subject) => subject !== val),
+              });
+            } else {
+              setFormData({
+                ...formData,
+                subjects: [...formData.subjects, val]
+              });
+            }
+            }}/>{" "}
+            History
         </div>
         <div className='btn-container'>
           <button className={`btn ${error ? 'disabled' : ''}`} 
