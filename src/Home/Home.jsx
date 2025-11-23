@@ -12,8 +12,13 @@ function Home() {
       onChange={(e)=>{
       setName(e.target.value)
       }}
+        value={name}
       />
-      <div className="btn">Save</div>
+      <button className="btn">Save</button>
+      <button className="btn" 
+      onClick={()=>{ 
+        setName("")
+      }}>Clear</button>
     </div>
   )
 }
