@@ -13,15 +13,25 @@ function Home() {
         alert("Please enter your name");
         return;
       }
+      if(!age){
+        alert("Please enter your age");
+        return;
+      }
       localStorage.setItem("name",name);
+      localStorage.setItem("age",age);
       };
 
     useEffect(()=>{
       const nameFromStorage=localStorage.getItem("name");
+      const ageFromStorage=localStorage.getItem("age");
+      if(ageFromStorage){
+        setAge(ageFromStorage);
+      }
       if(nameFromStorage){
         setName(nameFromStorage);
       }
     },[]);
+
 
     useEffect(()=>{
       if(name.length<3){
@@ -34,6 +44,18 @@ function Home() {
         setError("");
       }
     },[name]);
+
+    useEffect(()=>{
+      if(age<18){
+        setError("Age must be at least 18");
+      }
+      else if(age>60){
+        setError("Age must be less than 60");
+      }
+      else{
+        setError("");
+      }
+    },[age]);
 
   return (
     <div>
@@ -48,7 +70,7 @@ function Home() {
       }}
         value={name}
       />
-      <p className='error-msg'>{error}</p>
+     
       <input type="number"
       placeholder="Enter your age"
       className='name-input' 
@@ -57,6 +79,8 @@ function Home() {
       }}
         value={age}
       />
+       <p className='error-msg'>{error}</p>
+
       <div className='btn-container'>
         <button className={`btn ${error ? 'disabled' : null}`} 
         onClick={saveName}
