@@ -18,11 +18,9 @@ function Home() {
       if(storedData){
         const parsedData=JSON.parse(storedData);
         setFormData(prevData=>({
-          ...prevData, // Use the previous state as a base
-                ...parsedData, // Overwrite with loaded data
-                // Explicitly ensure 'subjects' is an array if the stored value is missing or null
+          ...prevData, 
+                ...parsedData, 
                 subjects: Array.isArray(parsedData.subjects) ? parsedData.subjects : [],
-                // Ensure age is treated as a string for the input value binding
                 age: parsedData.age ? String(parsedData.age) : '',
       }));
       setError('')
