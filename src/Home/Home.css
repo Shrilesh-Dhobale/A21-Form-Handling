@@ -55,3 +55,8 @@ h1 {
   display: flex;
   gap: 10px;
 }
+.Msgs {
+  margin-bottom: 20px;
+  text-align: center;
+  gap:2px;
+}

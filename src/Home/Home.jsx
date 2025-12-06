@@ -17,10 +17,14 @@ function Home() {
       const storedData=localStorage.getItem('userData');
       if(storedData){
         const parsedData=JSON.parse(storedData);
-        setFormData({
-          name:parsedData.name || '',
-          age:parsedData.age || '',
-      })
+        setFormData(prevData=>({
+          ...prevData, // Use the previous state as a base
+                ...parsedData, // Overwrite with loaded data
+                // Explicitly ensure 'subjects' is an array if the stored value is missing or null
+                subjects: Array.isArray(parsedData.subjects) ? parsedData.subjects : [],
+                // Ensure age is treated as a string for the input value binding
+                age: parsedData.age ? String(parsedData.age) : '',
+      }));
       setError('')
       }
     }, []);
@@ -44,7 +48,7 @@ function Home() {
     }, [formData.name, formData.age]);
 
     const saveName = () => {
-      if(formData.error){
+      if(error){
         alert("Please fix the errors before saving.");
         return;
       }
@@ -55,8 +59,13 @@ function Home() {
   return (
     <div>
       <div className='home-container'>
+        <div className="Msgs">
         <h1>Hello {formData.name} </h1>
         <p>Your age is {formData.age ? formData.age : "unknown"}</p>
+        <p>Your city is {formData.city ? formData.city : "unknown"}</p>
+        <p>Your gender is {formData.gender ? formData.gender  : "unknown"}</p>
+        <p>Your optional subjects are {formData.subjects.length > 0 ? formData.subjects.join(', ') : "none"}</p>
+        </div>
         <input type="text"
           placeholder="Enter your name"
           className='name-input' 
@@ -83,7 +92,7 @@ function Home() {
             value={formData.city}
             className='name-input'>
             <option value="">Select City</option>
-            <option value="Ngpr">Nagpur</option>
+            <option value="Ngp">Nagpur</option>
             <option value="Pune">Pune</option>
             <option value="Mumbai">Mumbai</option>
             <option value="Delhi">Delhi</option>
@@ -143,7 +152,8 @@ function Home() {
                 subjects: [...formData.subjects, val]
               });
             }
-            }}/>{" "}
+            }}
+            />{" "}
             Science
           <input type="checkbox"
             name="subject"
